@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SachOnlineLab2.Models.SACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="text-centerss">SÁCH MỚI</h2>
+
+<div class="content-left">
+    <div class="col-3">
+        @Html.Action("ChuDePartials", "SachOnlines");
+    </div>
+
+    <div class="col-3">
+        @Html.Action("NXBPartials", "SachOnlines");
+    </div>
+
+</div>
+
+<div class="content-right">
+    <div class="row text-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6 hidden-xs">
+                <div class="thumbnail">
+                    <img src="~/Images/@Html.DisplayFor(modelItem => item.AnhBia)" alt="Thumbnail Image 1" class="img-responsive img-rounded imgbook ">
+                    <div class="caption">
+                        @Html.DisplayFor(modelItem => item.TenSach)
+                        <p>
+                            <a href="#" class="btn btn-warning" role="button">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <nav class="pagination-btn" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+@Html.Action("SachBNPartials", "SachOnlines");
+
+
+
